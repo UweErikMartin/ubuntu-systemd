@@ -1,7 +1,4 @@
 FROM ubuntu:latest AS final
-ARG TARGETARCH
-
-RUN echo "building runner for $TARGETARCH runner_$TARGETARCH"
 
 ENV \
 	DEBIAN_FRONTEND=noninteractive \
@@ -13,6 +10,7 @@ ENV \
 RUN \
 	apt-get update && \
 	apt-get install -y --no-install-recommends \
+		systemd \
 		&& \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists
