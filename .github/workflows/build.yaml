@@ -10,7 +10,7 @@ jobs:
 
     - name: Evaluate Build Environment variables
       run: |
-        echo '${{github.repository}}' | sed -E 's/.*/IMAGENAME=\L&/' | tee -a $GITHUB_ENV
+        echo $(basename ${{github.repository}}) | sed -E 's/.*/IMAGENAME=\L&/' | tee -a $GITHUB_ENV
 
     - name: Perform Checkout
       uses: actions/checkout@v4
